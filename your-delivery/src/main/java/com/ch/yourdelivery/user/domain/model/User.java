@@ -1,22 +1,14 @@
 package com.ch.yourdelivery.user.domain.model;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
-/**
- * com.ch.yourdelivery.user.domain
- * User
- *
- * @author : ted
- * @date : 2023/07/10
- * @tags :
- */
-@Builder
+@Setter
 @Getter
+@NoArgsConstructor
 public class User {
 
-    private final String userNnumber;
-    private final String id;
-    private final String password;
+    private Long id;
+    private String email;
+    private String password;
 
 }

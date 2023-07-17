@@ -4,20 +4,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 
-/**
- * com.ch.yourdelivery.user.domain.dto
- * UserDto
- *
- * @author : ted
- * @date : 2023/07/10
- * @tags :
- */
 @Getter
 @Builder
-public class UserInDto {
+public class UserRequest {
 
     @NonNull
-    private final String id;
+    private final String email;
 
     @NonNull
     private final String password;

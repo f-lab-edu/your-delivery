@@ -12,17 +12,11 @@ public class UserRepositoryImpl implements UserRepository {
     static long size = 0;
 
     @Override
-    public User save(User user) throws Exception {
+    public User save(User user) {
 
         String email = user.getEmail();
         user.setId((Long.valueOf(++size)));
-
-        if (!userTable.containsKey(email)) {
-            userTable.put(email, user);
-        }else{
-            throw new Exception("존재");
-        }
-
+        userTable.put(email, user);
         return user;
     }
 

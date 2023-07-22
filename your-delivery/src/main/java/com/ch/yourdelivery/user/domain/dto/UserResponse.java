@@ -8,7 +8,6 @@ import lombok.NonNull;
 @Builder
 public class UserResponse {
 
-    @NonNull
     private final Long id;
 
     @NonNull

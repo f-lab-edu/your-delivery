@@ -16,7 +16,7 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
             return userRepository.save(user);
         }else{
-            throw new Exception("이미 해당아이디 존재함");
+            throw new RuntimeException();
         }
     }
 }

@@ -4,6 +4,8 @@ import com.ch.yourdelivery.user.domain.model.User;
 
 public interface UserRepository {
 
-    User save(User user);
+    User save(User user) throws Exception;
+
+    User findByEmail(String email);
 
 }

@@ -18,13 +18,13 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public UserResponse signUp(@RequestBody UserRequest userRequest) {
+    public UserResponse signUp(@RequestBody UserRequest userRequest) throws Exception {
 
         User user = new User();
         user.setEmail(userRequest.getEmail());
         user.setPassword(userRequest.getPassword());
 
-        User savedUser = userService.saveUser(user);
+        User savedUser = userService.emailSignUp(user);
         return UserResponse.builder()
                 .id(savedUser.getId())
                 .email(savedUser.getEmail())

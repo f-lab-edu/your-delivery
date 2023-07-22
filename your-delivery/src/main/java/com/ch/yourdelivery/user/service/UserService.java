@@ -11,7 +11,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User saveUser(User user){
-        return userRepository.save(user);
+    public User emailSignUp(User user) throws Exception {
+
+        if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
+            return userRepository.save(user);
+        }else{
+            throw new Exception("이미 해당아이디 존재함");
+        }
     }
 }

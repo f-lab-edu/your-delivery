@@ -11,7 +11,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User emailSignUp(User user) throws Exception {
+    public User emailSignUp(User user) {
 
         if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
             return userRepository.save(user);

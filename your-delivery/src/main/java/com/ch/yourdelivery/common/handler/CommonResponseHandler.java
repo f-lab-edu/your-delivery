@@ -1,7 +1,7 @@
 package com.ch.yourdelivery.common.handler;
 
 import com.ch.yourdelivery.common.model.BaseObject;
-import com.ch.yourdelivery.common.model.ExceptionObject;
+import com.ch.yourdelivery.common.response.BaseResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -21,9 +21,7 @@ public class CommonResponseHandler implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        //object 관련 작성
-
-        //baseResponse 객체를 그 때 알려줬던 것처럼 만들고, 그다음에 여기서 어떻게 써서 리턴할 것인지 결정.
-        return body instanceof BaseObject ? new BaseObject() : new ExceptionObject();
+        //header는 필요하면 필터에서 구현 예정
+        return body instanceof BaseObject ? new BaseResponse(body) : new BaseResponse();
     }
 }

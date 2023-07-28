@@ -26,15 +26,7 @@ public class UserController {
         user.setEmail(userRequest.getEmail());
         user.setPassword(userRequest.getPassword());
 
-        User savedUser = user;
-
-        try {
-            savedUser = userService.emailSignUp(user);
-        } catch (Exception e) {
-            return new ResponseEntity<>(UserResponse.builder()
-                    .email(savedUser.getEmail())
-                    .build(), HttpStatus.CONFLICT);
-        }
+        User savedUser = userService.emailSignUp(user);
 
         return new ResponseEntity<>(UserResponse.builder()
                 .id(savedUser.getId())

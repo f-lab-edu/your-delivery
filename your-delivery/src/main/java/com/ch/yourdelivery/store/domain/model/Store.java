@@ -1,6 +1,5 @@
 package com.ch.yourdelivery.store.domain.model;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 

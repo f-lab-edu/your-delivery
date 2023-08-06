@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StoreService {
     private final StoreRepository storeRepository;
-    public Store saveStoreInformation(Store store) {
+    public Store saveStore(Store store) {
         return storeRepository.save(store);
     }
 }

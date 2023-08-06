@@ -27,7 +27,7 @@ public class StoreController {
         store.setDescriptionForNotification(storeRequest.getDescriptionForNotification());
         store.setStoreLocation(storeRequest.getStoreLocation());
 
-        store = storeService.saveStoreInformation(store);
+        store = storeService.saveStore(store);
 
         return StoreResponse.builder()
                 .id(store.getId())

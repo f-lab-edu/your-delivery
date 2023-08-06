@@ -8,8 +8,8 @@ import java.util.HashMap;
 @Repository
 public class OwnerRepositoryImpl implements OwnerRepository {
 
-    final HashMap<String, Owner> ownerTable = new HashMap<String, Owner>();
-    static long size = 0;
+    final HashMap<String, Owner> ownerTable = new HashMap<>();
+    long size = 0;
 
     @Override
     public Owner save(Owner owner) {
@@ -22,11 +22,6 @@ public class OwnerRepositoryImpl implements OwnerRepository {
 
     @Override
     public Owner findByEmail(String email) {
-
-        if (ownerTable.containsKey(email)) {
-            return ownerTable.get(email);
-        }
-
-        return new Owner();
+       return ownerTable.get(email);
     }
 }

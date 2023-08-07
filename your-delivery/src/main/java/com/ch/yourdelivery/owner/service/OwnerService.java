@@ -12,7 +12,10 @@ public class OwnerService {
     private final OwnerRepository ownerRepository;
 
     public Owner emailSignUp(Owner owner) {
-
+//aaa
+        //save... A  table
+        //save... B table
+        //update ...
         if (ownerRepository.findByEmail(owner.getEmail()).getEmail() == null) {
             return ownerRepository.save(owner);
         } else {

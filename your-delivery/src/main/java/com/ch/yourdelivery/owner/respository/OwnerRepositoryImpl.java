@@ -8,7 +8,8 @@ import java.util.HashMap;
 @Repository
 public class OwnerRepositoryImpl implements OwnerRepository {
 
-    final HashMap<String, Owner> ownerTable = new HashMap<>();
+    final HashMap<Long, Owner> ownerTable = new HashMap<>();
+    final HashMap<String, Long> ownerUniqueIndex = new HashMap<>();
     long size = 0;
 
     @Override
@@ -16,12 +17,13 @@ public class OwnerRepositoryImpl implements OwnerRepository {
 
         String email = owner.getEmail();
         owner.setId((Long.valueOf(++size)));
-        ownerTable.put(email, owner);
+        ownerTable.put(owner.getId(), owner);
+        ownerUniqueIndex.put(email, owner.getId());
         return owner;
     }
 
     @Override
     public Owner findByEmail(String email) {
-       return ownerTable.get(email);
+        return ownerTable.get(ownerUniqueIndex.get(email));
     }
 }

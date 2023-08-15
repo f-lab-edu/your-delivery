@@ -27,3 +27,6 @@ jobs:
 
       - name: Apply Google Java Format
         run: java -jar google-java-format.jar --replace '**/*.java'
+
+      - name: Display Completion Message
+        run: echo "Workflow completed successfully!"

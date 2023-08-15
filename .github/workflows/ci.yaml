@@ -28,6 +28,9 @@ jobs:
         run: cd ./your-delivery
 
       - name: Build-2(with Gradle)
+        run: ls
+
+      - name: Build-3(with Gradle)
         run: ./gradlew build  # './gradlew'는 gradle 스크립트 경로
 
       - name: Install Google Java Format

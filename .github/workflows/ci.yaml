@@ -24,8 +24,11 @@ jobs:
           java-version: 17
           server-password: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Build(with Gradle)
-        run: ./your-delivery/gradlew build  # './gradlew'는 gradle 스크립트 경로
+      - name: Build-1(with Gradle)
+        run: cd ./your-delivery
+
+      - name: Build-2(with Gradle)
+        run: ./gradlew build  # './gradlew'는 gradle 스크립트 경로
 
       - name: Install Google Java Format
         run: curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar

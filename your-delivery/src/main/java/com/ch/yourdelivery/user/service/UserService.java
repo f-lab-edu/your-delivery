@@ -1,6 +1,6 @@
 package com.ch.yourdelivery.user.service;
 
-import com.ch.yourdelivery.common.exception.UserException;
+import com.ch.yourdelivery.common.exception.DeliveryException;
 import com.ch.yourdelivery.common.exception.ExceptionCode;
 import com.ch.yourdelivery.user.domain.model.User;
 import com.ch.yourdelivery.user.repository.UserRepository;
@@ -18,7 +18,7 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
             return userRepository.save(user);
         }else{
-            throw new UserException(ExceptionCode.CONFLICT);
+            throw new DeliveryException(ExceptionCode.CONFLICT);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.ch.yourdelivery.common.handler;
 
 import com.ch.yourdelivery.common.exception.ExceptionCode;
-import com.ch.yourdelivery.common.exception.UserException;
+import com.ch.yourdelivery.common.exception.DeliveryException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
@@ -15,11 +15,11 @@ public class DeliveryExceptionHandler {
     private final String CONTEXT_TYPE = "application/json;charset=UTF-8";
 
     @ResponseStatus(HttpStatus.CONFLICT)
-    @ExceptionHandler(value = UserException.class)
-    public void conflictExceptionHandler(HttpServletRequest request, HttpServletResponse response, UserException userException){
+    @ExceptionHandler(value = DeliveryException.class)
+    public void conflictExceptionHandler(HttpServletResponse response, DeliveryException deliveryException){
         response.setContentType(CONTEXT_TYPE);
 
-        if(userException.getExceptionCode().equals(ExceptionCode.CONFLICT)){
+        if(deliveryException.getExceptionCode().equals(ExceptionCode.CONFLICT)){
             response.setStatus(HttpStatus.CONFLICT.value());
         }else{
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());

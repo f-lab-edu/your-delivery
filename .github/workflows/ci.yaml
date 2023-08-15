@@ -25,7 +25,7 @@ jobs:
           server-password: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Build-1(with Gradle)
-        run: cd ./your-delivery
+        run: cd ./your-delivery/your-delivery
 
       - name: Build-2(with Gradle)
         run: ls

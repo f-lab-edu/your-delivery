@@ -33,13 +33,10 @@ jobs:
       - name: Install Google Java Format
         run: curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar
 
-      - name: Find JAR file
-        run: find ${{ github.workspace }} -name "*.jar"
-
       - name: Apply Google Java Format
         run: |
           cd ./your-delivery
-          java -jar google-java-format.jar --replace '**/*.java'
+          java -jar google-java-format.jar --replace .
 
       - name: Display Completion Message
         run: echo "Workflow completed successfully!"

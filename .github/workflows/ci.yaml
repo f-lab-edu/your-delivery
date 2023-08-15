@@ -1,0 +1,29 @@
+name: Google Java Format Check
+
+on:
+  push:
+    branches:
+      - '*'  # 모든 브랜치에 push될 때 실행
+  pull_request:
+    branches:
+      - '*'  # 모든 브랜치의 Pull Request가 생성될 때 실행
+
+jobs:
+  format_check:
+    name: Google Java Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: 17
+
+      - name: Install Google Java Format
+        run: curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar
+
+      - name: Apply Google Java Format
+        run: java -jar google-java-format.jar --replace '**/*.java'

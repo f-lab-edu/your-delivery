@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 17
-          token: ${{ secrets.ACCESS_TOKEN }}
+          server-password: ${{ secrets.ACCESS_TOKEN }}
 
       - name: Install Google Java Format
         run: curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar

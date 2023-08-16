@@ -31,13 +31,15 @@ jobs:
           #'./gradlew'는 gradle 스크립트 경로
 
       - name: Install Google Java Format
-        run: curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar
+        run: |
+          cd ./your-delivery
+          curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar
 
       - name: Apply Google Java Format
-        run: |
-          cd ./your-delivery/build/libs
-          chmod +x .
-          java -jar google-java-format.jar --replace .
+      - uses: actions/checkout@v2 # v2 minimum required
+      - uses: axel-op/googlejavaformat-action@v2
+        with:
+          args: "--set-exit-if-changed"
 
       - name: Display Completion Message
         run: echo "Workflow completed successfully!"

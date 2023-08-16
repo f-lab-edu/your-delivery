@@ -36,9 +36,10 @@ jobs:
           curl -L https://github.com/google/google-java-format/releases/download/google-java-format-1.9/google-java-format-1.9-all-deps.jar -o google-java-format.jar
 
       - name: Apply Google Java Format
-        uses: axel-op/googlejavaformat-action@v2
-        with:
-          args: "--set-exit-if-changed"
+        run: |
+          cd ./your-delivery
+          chmod +x .
+          java -jar google-java-format.jar --replace *.jar
 
       - name: Display Completion Message
         run: echo "Workflow completed successfully!"

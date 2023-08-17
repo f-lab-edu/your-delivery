@@ -18,7 +18,10 @@ public class DeliveryExceptionHandler {
     @ExceptionHandler(value = DeliveryException.class)
     public void conflictExceptionHandler(HttpServletResponse response, DeliveryException deliveryException){
         response.setContentType(CONTEXT_TYPE);
-
+        
+        deliveryException.getExceptionCode().getMessage();//공통 response 후 사용
+        deliveryException.getExceptionCode().getHttpStatus();//공통 response 후 사용
+        
         if(deliveryException.getExceptionCode().equals(ExceptionCode.CONFLICT)){
             response.setStatus(HttpStatus.CONFLICT.value());
         }else{

@@ -18,7 +18,7 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
             return userRepository.save(user);
         }else{
-            throw new DeliveryException(ExceptionCode.CONFLICT);
+            throw new DeliveryException(user, ExceptionCode.CONFLICT);
         }
     }
 }

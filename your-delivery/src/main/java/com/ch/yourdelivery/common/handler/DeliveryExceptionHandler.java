@@ -14,19 +14,14 @@ public class DeliveryExceptionHandler {
 
     private final String CONTEXT_TYPE = "application/json;charset=UTF-8";
 
-    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(value = DeliveryException.class)
     public void conflictExceptionHandler(HttpServletResponse response, DeliveryException deliveryException){
         response.setContentType(CONTEXT_TYPE);
         
         deliveryException.getExceptionCode().getMessage();//공통 response 후 사용
-        deliveryException.getExceptionCode().getHttpStatus();//공통 response 후 사용
-        
-        if(deliveryException.getExceptionCode().equals(ExceptionCode.CONFLICT)){
-            response.setStatus(HttpStatus.CONFLICT.value());
-        }else{
-            response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        }
 
+        //변경이 enum에서만 일어나도록 변경
+        HttpStatus status = deliveryException.getExceptionCode().getHttpStatus();
+        response.setStatus(status.value());
     }
 }

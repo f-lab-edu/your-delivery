@@ -1,9 +1,11 @@
 package com.ch.yourdelivery.common.response;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @AllArgsConstructor
+@Getter
 public class DeliveryResponse {
 
     String message;

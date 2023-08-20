@@ -8,7 +8,7 @@ import java.util.HashMap;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    final HashMap<String, User> userTable = new HashMap<String, User>();
+    public final HashMap<String, User> userTable = new HashMap<String, User>();
     static long size = 0;
 
     @Override
@@ -28,5 +28,10 @@ public class UserRepositoryImpl implements UserRepository {
         }
 
         return new User();
+    }
+
+    @Override
+    public HashMap<String, User> getUserTable() {
+        return userTable;
     }
 }

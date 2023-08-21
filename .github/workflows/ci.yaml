@@ -45,6 +45,7 @@ jobs:
 
       - name: Install CheckStyle
         run: |
+          cd ./your-delivery
           wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.2/checkstyle-10.12.2-all.jar
           pwd
           # 설치 완료

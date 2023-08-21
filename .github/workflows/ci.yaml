@@ -27,6 +27,7 @@ jobs:
       - name: Build(with Gradle)
         run: | 
           cd ./your-delivery
+          pwd
           ./gradlew build  
           #'./gradlew'는 gradle 스크립트 경로
 
@@ -39,17 +40,20 @@ jobs:
 
       - name: apply Google Java Format
         run: |
+          pwd
           chmod +x .
           java -jar google-java-format.jar --dry-run --set-exit-if-changed **/*.jar
           # 하위폴더에 구글 포맷 적용
 
       - name: Install CheckStyle
         run: |
+          pwd
           wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.2/checkstyle-10.12.2-all.jar
           # 설치 완료
 
       - name: Check CheckStyle
         run: |
+          pwd
           java -jar checkstyle-10.12.2-all.jar -c /google_checks.xml **/*.java
           # 하위폴더에 구글 포맷 적용되어있는지 확인
 

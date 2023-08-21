@@ -1,5 +1,7 @@
 package com.ch.yourdelivery.user.service;
 
+import com.ch.yourdelivery.common.exception.DeliveryException;
+import com.ch.yourdelivery.common.exception.ExceptionCode;
 import com.ch.yourdelivery.user.domain.model.User;
 import com.ch.yourdelivery.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +18,7 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).getEmail()==null) {
             return userRepository.save(user);
         }else{
-            throw new RuntimeException();
+            throw new DeliveryException(user, ExceptionCode.CONFLICT);
         }
     }
 }

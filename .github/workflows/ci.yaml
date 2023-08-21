@@ -46,13 +46,13 @@ jobs:
       - name: Install CheckStyle
         run: |
           wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.2/checkstyle-10.12.2-all.jar
-          mv ./checkstyle-10.12.2-all.jar ./checkstyle.jar
+          pwd
           # 설치 완료
 
       - name: Check CheckStyle
         run: |
+          java checkstyle-10.12.2-all.jar -c /google_checks.xml **/*.java
           pwd
-          java checkstyle.jar -c /google_checks.xml **/*.java
           # 하위폴더에 구글 포맷 적용되어있는지 확인
 
       - name: Display Completion Message

@@ -52,8 +52,7 @@ jobs:
 
       - name: Check CheckStyle
         run: |
-          pwd
-          ls
+          cd ./your-delivery
           java checkstyle-10.12.2-all.jar -c /google_checks.xml **/*.java
           # 하위폴더에 구글 포맷 적용되어있는지 확인
 

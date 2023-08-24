@@ -1,6 +1,5 @@
 package com.ch.yourdelivery.user.repository;
 
-import com.ch.yourdelivery.user.domain.dto.UserRequest;
 import com.ch.yourdelivery.user.domain.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +19,12 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
 
     @Override
-    public User getUserForLogin(UserRequest userRequest) {
-       return userTable.get(userRequest.getEmail());
+    public User getUserForLogin(String email, String password) {
+        User user = userTable.get(email);
+        if (password.equals(user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 }

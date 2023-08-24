@@ -5,6 +5,6 @@ import com.ch.yourdelivery.user.domain.model.User;
 
 public interface LoginRepository {
 
-    User getUserForLogin(UserRequest userRequest);
+    User getUserForLogin(String email, String password);
 
 }

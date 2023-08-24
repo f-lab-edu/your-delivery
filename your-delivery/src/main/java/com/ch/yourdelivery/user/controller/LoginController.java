@@ -23,13 +23,11 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping
-    public DeliveryResponse sessionLogin(@RequestBody LoginRequest loginRequest) {
-        UserRequest userRequest = UserRequest.builder()
-                .email(loginRequest.getEmail())
-                .password(loginRequest.getPassword())
-                .build();
+    public DeliveryResponse<User> sessionLogin(@RequestBody LoginRequest loginRequest) {
 
-        return loginService.sessionLogin(userRequest);
+
+        User user = loginService.sessionLogin(loginRequest);
+        return DeliveryResponse.of(user);
     }
 
 }

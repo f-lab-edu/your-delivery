@@ -10,5 +10,5 @@ public interface UserRepository {
 
     User findByEmail(String email);
 
-    HashMap<String, User> getUserTable();
+    User getUserForLogin(String email, String password);
 }

@@ -10,10 +10,7 @@ import com.ch.yourdelivery.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -23,11 +20,10 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping
-    public DeliveryResponse<User> sessionLogin(@RequestBody LoginRequest loginRequest) {
-
+    public DeliveryResponse<UserResponse> sessionLogin(@RequestBody LoginRequest loginRequest) {
 
         User user = loginService.sessionLogin(loginRequest);
-        return DeliveryResponse.of(user);
+        return DeliveryResponse.of(UserResponse.builder().id(user.getId()).email(user.getEmail()).build());
     }
 
 }

@@ -2,7 +2,7 @@ package com.ch.yourdelivery.common.response;
 
 import lombok.Getter;
 
-
+@Getter
 public class DeliveryResponse<T> {
     T data;
 

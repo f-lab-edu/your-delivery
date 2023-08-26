@@ -31,7 +31,12 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public HashMap<String, User> getUserTable() {
-        return userTable;
+    public User getUserForLogin(String email, String password) {
+        User user = userTable.get(email);
+        if (password.equals(user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
 }

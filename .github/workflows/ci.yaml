@@ -1,0 +1,41 @@
+name: Google Java Format Check
+
+on:
+  push:
+    branches:
+      - '*'  # 모든 브랜치에 push될 때 실행
+  pull_request:
+    branches:
+      - '*'  # 모든 브랜치의 Pull Request가 생성될 때 실행
+
+jobs:
+  format_check:
+    name: Google Java Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: 17
+          server-password: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Build(with Gradle)
+        run: |
+          cd ./your-delivery
+          ./gradlew build
+          #'./gradlew'는 gradle 스크립트 경로
+
+      - name: Format Check Using CheckStyle
+        run: |
+          cd ./your-delivery
+          chmod +x ./checkstyle-10.12.2-all.jar
+          java -jar checkstyle-10.12.2-all.jar -c ./google_checks.xml *
+          # 하위폴더에 구글 포맷 적용되어있는지 확인
+
+      - name: Display Completion Message
+        run: echo "Workflow completed successfully!"

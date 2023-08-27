@@ -24,11 +24,10 @@ jobs:
           java-version: 17
           server-password: ${{ secrets.ACCESS_TOKEN }}
 
-      - name : Move to working space
-        run : cd ./your-delivery
-
       - name: Build(with Gradle)
-        run: ./gradlew build
+        run: | 
+              cd ./your-delivery
+              ./gradlew build
           #'./gradlew'는 gradle 스크립트 경로
 
       - name: Check CheckStyle

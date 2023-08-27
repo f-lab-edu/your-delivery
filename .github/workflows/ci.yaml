@@ -24,38 +24,15 @@ jobs:
           java-version: 17
           server-password: ${{ secrets.ACCESS_TOKEN }}
 
+      - name : Move to working space
+        run : cd ./your-delivery
+
       - name: Build(with Gradle)
-        run: | 
-          cd ./your-delivery
-          pwd
-          ./gradlew build  
+        run: ./gradlew build
           #'./gradlew'는 gradle 스크립트 경로
 
-      - name: Install Google Java Format
-        run: |
-          wget https://github.com/google/google-java-format/releases/download/v1.15.0/google-java-format-1.15.0-all-deps.jar
-          mv ./google-java-format-1.15.0-all-deps.jar ./google-java-format.jar
-          # google java format 공식 사이트 asset 다운로드 경로
-
-      - name: apply Google Java Format
-        run: |
-          chmod +x .
-          java -jar google-java-format.jar --dry-run --set-exit-if-changed **/*.jar
-          # 하위폴더에 구글 포맷 적용
-
-      - name: Install CheckStyle
-        run: |
-          cd ./your-delivery
-          wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.12.2/checkstyle-10.12.2-all.jar
-          pwd
-          ls
-          # 설치 완료
-
       - name: Check CheckStyle
-        run: |
-          cd ./your-delivery
-          ls
-          java checkstyle-10.12.2-all.jar -c ./google_checks.xml **/*.java
+        run: java -jar checkstyle-10.12.2-all.jar -c ./google_checks.xml *
           # 하위폴더에 구글 포맷 적용되어있는지 확인
 
       - name: Display Completion Message

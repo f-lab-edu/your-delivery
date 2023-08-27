@@ -32,6 +32,7 @@ jobs:
 
       - name: Format Check Using CheckStyle
         run: |
+              cd ./your-delivery
               chmod +x ./checkstyle-10.12.2-all.jar
               java -jar checkstyle-10.12.2-all.jar -c ./google_checks.xml *
           # 하위폴더에 구글 포맷 적용되어있는지 확인

@@ -1,9 +1,11 @@
 package com.ch.yourdelivery.store.repository;
 
 import com.ch.yourdelivery.store.domain.model.Store;
+import com.ch.yourdelivery.store.domain.model.StoreLocation;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class StoreRepositoryImpl implements StoreRepository {
@@ -17,6 +19,11 @@ public class StoreRepositoryImpl implements StoreRepository {
         store.setId((Long.valueOf(++size)));
         storeTable.put(store.getId(), store);
         return store;
+    }
+
+    @Override
+    public List<Store> findAll(StoreLocation storeLocation) {
+        return null;
     }
 
 }

@@ -1,10 +1,11 @@
 package com.ch.yourdelivery.store.domain.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
+@Builder
 public class DeliveryLocation {
 
     private String name; // 동명

@@ -1,12 +1,14 @@
 package com.ch.yourdelivery.store.domain.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
 @Getter
-@Setter
+@Setter //ID 증가 때문에 있는데, 삭제예정
+@Builder
 public class Store {
 
     private Long id;

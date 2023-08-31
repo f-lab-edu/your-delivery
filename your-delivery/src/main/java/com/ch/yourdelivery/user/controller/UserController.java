@@ -20,17 +20,18 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity signUp(@RequestBody UserRequest userRequest) {
+    public UserResponse signUp(@RequestBody UserRequest userRequest) {
 
-        User user = new User();
-        user.setEmail(userRequest.getEmail());
-        user.setPassword(userRequest.getPassword());
+        User user = User.builder()
+                .email(userRequest.getEmail())
+                .password(userRequest.getPassword())
+                .build();
 
         User savedUser = userService.emailSignUp(user);
 
-        return new ResponseEntity<>(UserResponse.builder()
+        return UserResponse.builder()
                 .id(savedUser.getId())
                 .email(savedUser.getEmail())
-                .build(), HttpStatus.CREATED);
+                .build();
     }
 }

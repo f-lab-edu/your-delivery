@@ -2,7 +2,7 @@ package com.ch.yourdelivery.store.domain.dto;
 
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
-import com.ch.yourdelivery.store.domain.model.StoreLocation;
+import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -18,6 +18,6 @@ public class StoreResponse {
     private String phoneNumber;
     private List<DeliveryLocation> deliveryLocation; //배달가능지역
     private String descriptionForNotification; //이벤트나, 공지사항등의 설명란
-    private StoreLocation storeLocation; //가게 위치
+    private StoreLocationXY storeLocationXY; //가게 위치
 
 }

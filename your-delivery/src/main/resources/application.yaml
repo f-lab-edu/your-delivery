@@ -1,3 +1,20 @@
 spring:
+  application:
+    name: your-delivery
   excludePaths:
     session: /login, /user
+  h2:
+    console:
+      enabled: 'true'
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:your-delivery?allowMultiQueries=true;
+    driverClassName: org.h2.Driver
+    password: ''
+  jpa:
+    open-in-view: false # Client에 응답이 되고 난 뒤에, DB Connection을 반환한다. / False는 메소드 실행 후 반납
+    hibernate:
+      ddl-auto: create #초기 : create or update / 개발 : update / 운영 : validate or none
+      show_sql: true
+      format_sql: true
+

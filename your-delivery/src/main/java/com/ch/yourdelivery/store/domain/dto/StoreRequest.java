@@ -8,9 +8,7 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter
-@Builder
-public class StoreRequest {
+@Getter @Builder public class StoreRequest {
 
     private String name;
     private Long ownerId;

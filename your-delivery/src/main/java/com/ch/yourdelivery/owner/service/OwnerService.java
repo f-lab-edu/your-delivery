@@ -5,14 +5,12 @@ import com.ch.yourdelivery.owner.respository.OwnerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class OwnerService {
+@Service @RequiredArgsConstructor public class OwnerService {
 
     private final OwnerRepository ownerRepository;
 
     public Owner emailSignUp(Owner owner) {
-//aaa
+        //aaa
         //save... A  table
         //save... B table
         //update ...

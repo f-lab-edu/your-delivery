@@ -10,21 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/login")
-@RequiredArgsConstructor
-public class LoginController {
+@RestController @RequestMapping("/login") @RequiredArgsConstructor public class LoginController {
 
     private final LoginService loginService;
 
-    @PostMapping
-    public UserResponse sessionLogin(@RequestBody LoginRequest loginRequest) {
+    @PostMapping public UserResponse sessionLogin(@RequestBody LoginRequest loginRequest) {
 
         User user = loginService.sessionLogin(loginRequest);
-        return UserResponse.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .build();
+        return UserResponse.builder().id(user.getId()).email(user.getEmail()).build();
     }
 
 }

@@ -7,17 +7,15 @@ import com.ch.yourdelivery.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
-public class UserService {
+@Service @RequiredArgsConstructor public class UserService {
 
     private final UserRepository userRepository;
 
     public User emailSignUp(User user) {
 
-        if (userRepository.findByEmail(user.getEmail())==null) {
+        if (userRepository.findByEmail(user.getEmail()) == null) {
             return userRepository.save(user);
-        }else{
+        } else {
             throw new DeliveryException(user, ExceptionCode.CONFLICT);
         }
     }

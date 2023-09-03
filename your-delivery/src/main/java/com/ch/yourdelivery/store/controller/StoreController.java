@@ -25,7 +25,7 @@ public class StoreController {
                 .phoneNumber(storeRequest.getPhoneNumber())
                 .deliveryLocation(storeRequest.getDeliveryLocation())
                 .descriptionForNotification(storeRequest.getDescriptionForNotification())
-                .storeLocation(storeRequest.getStoreLocation())
+                .storeLocationXY(storeRequest.getStoreLocationXY())
                 .build();
 
         store = storeService.saveStore(store);
@@ -37,7 +37,7 @@ public class StoreController {
                 .phoneNumber(store.getPhoneNumber())
                 .deliveryLocation(store.getDeliveryLocation())
                 .descriptionForNotification(store.getDescriptionForNotification())
-                .storeLocation(store.getStoreLocation())
+                .storeLocationXY(store.getStoreLocationXY())
                 .build();
     }
 

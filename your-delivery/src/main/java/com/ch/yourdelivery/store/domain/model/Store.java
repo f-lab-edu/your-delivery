@@ -3,7 +3,6 @@ package com.ch.yourdelivery.store.domain.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,14 +21,14 @@ public class Store {
     private String name;
 
     @ElementCollection// Embedded class가 Collection인 경우
-    private List<OperatingTimeInMonth> operatingTimeList = new ArrayList<>(); //운영시간
+    private List<OperatingTimeInMonth> operatingTimeList; //운영시간
     private String phoneNumber;
 
     @ElementCollection// Embedded class가 Collection인 경우
-    private List<DeliveryLocation> deliveryLocation = new ArrayList<>(); //배달가능지역
+    private List<DeliveryLocation> deliveryLocation; //배달가능지역
     private String descriptionForNotification; //이벤트나, 공지사항등의 설명란
 
     @Embedded
-    private StoreLocation storeLocation; //가게 위치
+    private StoreLocationXY storeLocationXY; //가게 위치
 
 }

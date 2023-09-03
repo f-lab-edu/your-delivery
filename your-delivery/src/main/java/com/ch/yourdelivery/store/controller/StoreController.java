@@ -5,9 +5,9 @@ import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 import com.ch.yourdelivery.store.domain.model.Store;
 import com.ch.yourdelivery.store.service.StoreService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +21,7 @@ public class StoreController {
 
         Store store = Store.builder()
                 .name(storeRequest.getName())
+                .ownerId(storeRequest.getOwnerId())
                 .operatingTimeList(storeRequest.getOperatingTimeList())
                 .phoneNumber(storeRequest.getPhoneNumber())
                 .deliveryLocation(storeRequest.getDeliveryLocation())
@@ -32,6 +33,7 @@ public class StoreController {
 
         return StoreResponse.builder()
                 .id(store.getId())
+                .ownerId(store.getOwnerId())
                 .name(store.getName())
                 .operatingTimeList(store.getOperatingTimeList())
                 .phoneNumber(store.getPhoneNumber())
@@ -39,6 +41,12 @@ public class StoreController {
                 .descriptionForNotification(store.getDescriptionForNotification())
                 .storeLocationXY(store.getStoreLocationXY())
                 .build();
+    }
+
+    //가게정보 다건조회
+    @GetMapping("/stores")
+    public List<Store> findStores(@RequestParam("ownerId") String ownerId) {
+        return storeService.findAllByOwnerId(ownerId);
     }
 
 }

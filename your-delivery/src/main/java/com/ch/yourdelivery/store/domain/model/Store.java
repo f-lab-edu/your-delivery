@@ -18,13 +18,15 @@ public class Store {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long ownerId;
+
     private String name;
 
-    @ElementCollection// Embedded class가 Collection인 경우
+    @ElementCollection(fetch = FetchType.EAGER)// EAGER는 성능에 문제를 일으킬 수 있기 때문에, 추후 다른 해결법을 찾을 예정
     private List<OperatingTimeInMonth> operatingTimeList; //운영시간
     private String phoneNumber;
 
-    @ElementCollection// Embedded class가 Collection인 경우
+    @ElementCollection(fetch = FetchType.EAGER)// EAGER는 성능에 문제를 일으킬 수 있기 때문에, 추후 다른 해결법을 찾을 예정
     private List<DeliveryLocation> deliveryLocation; //배달가능지역
     private String descriptionForNotification; //이벤트나, 공지사항등의 설명란
 

@@ -1,7 +1,7 @@
 package com.ch.yourdelivery.store.service;
 
 import com.ch.yourdelivery.store.domain.model.Store;
-import com.ch.yourdelivery.store.domain.model.StoreLocation;
+import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
 import com.ch.yourdelivery.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class StoreService {
         return storeRepository.save(store);
     }
 
-    public List<Store> findAllStores(StoreLocation storeLocation) {
-        return storeRepository.findAll(storeLocation);
+    public List<Store> findAllByOwnerId(String ownerId) {
+        return storeRepository.findAllByOwnerId(ownerId);
     }
 }

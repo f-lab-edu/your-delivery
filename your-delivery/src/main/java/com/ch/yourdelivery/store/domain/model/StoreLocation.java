@@ -1,10 +1,12 @@
 package com.ch.yourdelivery.store.domain.model;
 
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
 @Getter
+@Builder
+@Embeddable
 public class StoreLocation {
 
     private String mapX;//지도 X축

@@ -18,12 +18,20 @@ public class LoginService {
     private final HttpSession httpSession;
 
     public User sessionLogin(@RequestBody LoginRequest loginRequest) {
-        User user = userRepository.getUserForLogin(loginRequest.getEmail(), loginRequest.getPassword());
+
+        User user = userRepository.findByEmail(loginRequest.getEmail());
         if (user == null) {
             throw new DeliveryException(user, ExceptionCode.BAD_REQUEST);
-        } else {
+        }
+
+
+        if (user.getPassword().equals(user.getPassword())) {
             httpSession.setAttribute(DeliveryConstant.USER_SESSION_EMAIL, user.getEmail());
             return user;
+        } else {
+            return null;
         }
+
+
     }
 }

@@ -2,6 +2,7 @@ package com.ch.yourdelivery.store.controller;
 
 import com.ch.yourdelivery.store.domain.dto.StoreRequest;
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
+import com.ch.yourdelivery.store.domain.model.Menu;
 import com.ch.yourdelivery.store.domain.model.Store;
 import com.ch.yourdelivery.store.service.StoreService;
 import lombok.RequiredArgsConstructor;
@@ -39,4 +40,9 @@ import java.util.List;
         return storeService.findAllByOwnerId(ownerId);
     }
 
+    //가게정보에 대한 메뉴 다건조회
+    @GetMapping("/stores/{id}/menus") public List<Menu> findMenus(
+            @RequestParam("id") String storeId) {
+        return storeService.findMenusByStore(storeId);
+    }
 }

@@ -3,6 +3,7 @@ package com.ch.yourdelivery.store.domain.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Builder @Entity @Table(name = "stores") @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,4 +28,5 @@ public class Store {
 
     @Embedded private StoreLocationXY storeLocationXY; //가게 위치
 
+    @OneToMany @JoinColumn(name = "menu_id") private List<Menu> menus = new ArrayList<>();
 }

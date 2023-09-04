@@ -1,5 +1,6 @@
 package com.ch.yourdelivery.store.service;
 
+import com.ch.yourdelivery.store.domain.model.Menu;
 import com.ch.yourdelivery.store.domain.model.Store;
 import com.ch.yourdelivery.store.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,5 +17,10 @@ import java.util.List;
 
     public List<Store> findAllByOwnerId(String ownerId) {
         return storeRepository.findAllByOwnerId(ownerId);
+    }
+
+
+    public List<Menu> findMenusByStore(String ownerId) {
+        return storeRepository.findMenusByStore(ownerId);
     }
 }

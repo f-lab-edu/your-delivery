@@ -8,7 +8,9 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter @Builder public class StoreResponse {
+@Getter
+@Builder
+public class StoreResponse {
 
     private Long id;
     private Long ownerId;

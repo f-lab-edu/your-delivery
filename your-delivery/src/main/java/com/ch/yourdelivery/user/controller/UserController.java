@@ -5,8 +5,6 @@ import com.ch.yourdelivery.user.domain.dto.UserResponse;
 import com.ch.yourdelivery.user.domain.model.User;
 import com.ch.yourdelivery.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +21,15 @@ public class UserController {
     public UserResponse signUp(@RequestBody UserRequest userRequest) {
 
         User user = User.builder()
-                .email(userRequest.getEmail())
-                .password(userRequest.getPassword())
-                .build();
+            .email(userRequest.getEmail())
+            .password(userRequest.getPassword())
+            .build();
 
         User savedUser = userService.emailSignUp(user);
 
         return UserResponse.builder()
-                .id(savedUser.getId())
-                .email(savedUser.getEmail())
-                .build();
+            .id(savedUser.getId())
+            .email(savedUser.getEmail())
+            .build();
     }
 }

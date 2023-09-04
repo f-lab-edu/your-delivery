@@ -15,9 +15,9 @@ public class UserService {
 
     public User emailSignUp(User user) {
 
-        if (userRepository.findByEmail(user.getEmail())==null) {
+        if (userRepository.findByEmail(user.getEmail()) == null) {
             return userRepository.save(user);
-        }else{
+        } else {
             throw new DeliveryException(user, ExceptionCode.CONFLICT);
         }
     }

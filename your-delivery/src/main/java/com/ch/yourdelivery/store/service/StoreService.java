@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@RequiredArgsConstructor @Service public class StoreService {
+@RequiredArgsConstructor
+@Service
+public class StoreService {
+
     private final StoreRepository storeRepository;
 
     public Store saveStore(Store store) {

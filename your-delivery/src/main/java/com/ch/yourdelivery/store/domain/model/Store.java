@@ -1,18 +1,37 @@
 package com.ch.yourdelivery.store.domain.model;
 
-import jakarta.persistence.*;
-import lombok.*;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Getter @Builder @Entity @Table(name = "stores") @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Builder
+@Entity
+@Table(name = "stores")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 //JPA Entity의 필수 요구사항
 @AllArgsConstructor(access = AccessLevel.PRIVATE)//JPA에서 Builder를 사용할때 필수, 하지만 외부 노출 안되도록 private
 public class Store {
 
-    @Id @Column(name = "store_id") @GeneratedValue(strategy = GenerationType.IDENTITY) private Long
-            id;
+    @Id
+    @Column(name = "store_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private Long ownerId;
 
@@ -26,7 +45,10 @@ public class Store {
     private List<DeliveryLocation> deliveryLocation; //배달가능지역
     private String descriptionForNotification; //이벤트나, 공지사항등의 설명란
 
-    @Embedded private StoreLocationXY storeLocationXY; //가게 위치
+    @Embedded
+    private StoreLocationXY storeLocationXY; //가게 위치
 
-    @OneToMany @JoinColumn(name = "menu_id") private List<Menu> menus = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "menu_id")
+    private List<Menu> menus = new ArrayList<>();
 }

@@ -3,12 +3,13 @@ package com.ch.yourdelivery.store.domain.dto;
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
 import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.List;
-
-@Getter @Builder public class StoreResponse {
+@Getter
+@Builder
+public class StoreResponse {
 
     private Long id;
     private Long ownerId;

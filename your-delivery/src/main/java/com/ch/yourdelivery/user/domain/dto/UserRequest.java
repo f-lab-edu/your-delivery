@@ -4,9 +4,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 
-@Getter @Builder public class UserRequest {
+@Getter
+@Builder
+public class UserRequest {
 
-    @NonNull private final String email;
+    @NonNull
+    private final String email;
 
-    @NonNull private final String password;
+    @NonNull
+    private final String password;
 }

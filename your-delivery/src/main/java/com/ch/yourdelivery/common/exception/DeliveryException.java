@@ -3,7 +3,9 @@ package com.ch.yourdelivery.common.exception;
 import lombok.Getter;
 import org.springframework.core.NestedRuntimeException;
 
-@Getter public class DeliveryException extends NestedRuntimeException {
+@Getter
+public class DeliveryException extends NestedRuntimeException {
+
     private final ExceptionCode exceptionCode;
     private final Object requestObject;
 

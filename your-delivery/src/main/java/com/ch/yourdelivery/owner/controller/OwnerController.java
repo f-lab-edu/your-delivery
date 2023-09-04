@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController @RequestMapping("/owners") @RequiredArgsConstructor public class OwnerController {
+@RestController
+@RequestMapping("/owners")
+@RequiredArgsConstructor
+public class OwnerController {
 
     private final OwnerService ownerService;
 
-    @PostMapping public ResponseEntity signUp(@RequestBody OwnerRequest ownerRequest) {
+    @PostMapping
+    public ResponseEntity signUp(@RequestBody OwnerRequest ownerRequest) {
 
         Owner owner = new Owner();
         owner.setEmail(ownerRequest.getEmail());
@@ -25,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
         Owner savedOwner = ownerService.emailSignUp(owner);
 
         return new ResponseEntity<>(
-                OwnerResponse.builder().id(savedOwner.getId()).email(savedOwner.getEmail()).build(),
-                HttpStatus.CREATED);
+            OwnerResponse.builder().id(savedOwner.getId()).email(savedOwner.getEmail()).build(),
+            HttpStatus.CREATED);
     }
 }

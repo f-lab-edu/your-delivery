@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository public interface StoreRepository extends JpaRepository<Store, Long> {
+@Repository
+public interface StoreRepository extends JpaRepository<Store, Long> {
+
     Store save(Store store);
 
     @Query("SELECT store " + "FROM Store store " + "WHERE store.ownerId =:ownerId")

@@ -11,7 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Service @RequiredArgsConstructor public class LoginService {
+@Service
+@RequiredArgsConstructor
+public class LoginService {
+
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
@@ -21,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
         if (user == null) {
             throw new DeliveryException(user, ExceptionCode.BAD_REQUEST);
         }
-
 
         if (user.getPassword().equals(user.getPassword())) {
             httpSession.setAttribute(DeliveryConstant.USER_SESSION_EMAIL, user.getEmail());

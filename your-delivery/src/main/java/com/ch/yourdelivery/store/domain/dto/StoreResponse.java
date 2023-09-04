@@ -11,6 +11,7 @@ import java.util.List;
 @Getter @Builder public class StoreResponse {
 
     private Long id;
+    private Long ownerId;
     private String name;
     private List<OperatingTimeInMonth> operatingTimeList; //운영시간
     private String phoneNumber;

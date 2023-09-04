@@ -5,6 +5,7 @@ import org.springframework.core.NestedRuntimeException;
 
 @Getter
 public class DeliveryException extends NestedRuntimeException {
+
     private final ExceptionCode exceptionCode;
     private final Object requestObject;
 

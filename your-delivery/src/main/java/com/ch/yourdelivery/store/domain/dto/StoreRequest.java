@@ -13,6 +13,7 @@ import java.util.List;
 public class StoreRequest {
 
     private String name;
+    private Long ownerId;
     private List<OperatingTimeInMonth> operatingTimeList; //운영시간
     private String phoneNumber;
     private List<DeliveryLocation> deliveryLocation; //배달가능지역

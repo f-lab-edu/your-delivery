@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 @RequiredArgsConstructor
 public class LoginService {
+
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
@@ -23,7 +24,6 @@ public class LoginService {
         if (user == null) {
             throw new DeliveryException(user, ExceptionCode.BAD_REQUEST);
         }
-
 
         if (user.getPassword().equals(user.getPassword())) {
             httpSession.setAttribute(DeliveryConstant.USER_SESSION_EMAIL, user.getEmail());

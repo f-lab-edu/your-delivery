@@ -22,9 +22,9 @@ public class LoginController {
 
         User user = loginService.sessionLogin(loginRequest);
         return UserResponse.builder()
-                .id(user.getId())
-                .email(user.getEmail())
-                .build();
+            .id(user.getId())
+            .email(user.getEmail())
+            .build();
     }
 
 }

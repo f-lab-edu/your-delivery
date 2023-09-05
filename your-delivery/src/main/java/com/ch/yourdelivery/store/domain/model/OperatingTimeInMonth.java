@@ -1,10 +1,11 @@
 package com.ch.yourdelivery.store.domain.model;
 
 import jakarta.persistence.Embeddable;
-import lombok.*;
-import org.springframework.cglib.core.Local;
-
-import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder

@@ -20,25 +20,25 @@ public class StoreController {
     public StoreResponse createStore(@RequestBody StoreRequest storeRequest) {
 
         Store store = Store.builder()
-                .name(storeRequest.getName())
-                .operatingTimeList(storeRequest.getOperatingTimeList())
-                .phoneNumber(storeRequest.getPhoneNumber())
-                .deliveryLocation(storeRequest.getDeliveryLocation())
-                .descriptionForNotification(storeRequest.getDescriptionForNotification())
-                .storeLocationXY(storeRequest.getStoreLocationXY())
-                .build();
+            .name(storeRequest.getName())
+            .operatingTimeList(storeRequest.getOperatingTimeList())
+            .phoneNumber(storeRequest.getPhoneNumber())
+            .deliveryLocation(storeRequest.getDeliveryLocation())
+            .descriptionForNotification(storeRequest.getDescriptionForNotification())
+            .storeLocationXY(storeRequest.getStoreLocationXY())
+            .build();
 
         store = storeService.saveStore(store);
 
         return StoreResponse.builder()
-                .id(store.getId())
-                .name(store.getName())
-                .operatingTimeList(store.getOperatingTimeList())
-                .phoneNumber(store.getPhoneNumber())
-                .deliveryLocation(store.getDeliveryLocation())
-                .descriptionForNotification(store.getDescriptionForNotification())
-                .storeLocationXY(store.getStoreLocationXY())
-                .build();
+            .id(store.getId())
+            .name(store.getName())
+            .operatingTimeList(store.getOperatingTimeList())
+            .phoneNumber(store.getPhoneNumber())
+            .deliveryLocation(store.getDeliveryLocation())
+            .descriptionForNotification(store.getDescriptionForNotification())
+            .storeLocationXY(store.getStoreLocationXY())
+            .build();
     }
 
 }

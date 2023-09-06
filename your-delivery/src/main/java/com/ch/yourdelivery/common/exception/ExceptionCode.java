@@ -7,8 +7,7 @@ import org.springframework.http.HttpStatus;
 @Getter
 @AllArgsConstructor
 public enum ExceptionCode {
-    CONFLICT("CONFLICT", HttpStatus.CONFLICT),
-    BAD_REQUEST("BAD_REQUEST", HttpStatus.BAD_REQUEST);
+    CONFLICT("CONFLICT", HttpStatus.CONFLICT), BAD_REQUEST("BAD_REQUEST", HttpStatus.BAD_REQUEST);
 
     String message;
     HttpStatus httpStatus;

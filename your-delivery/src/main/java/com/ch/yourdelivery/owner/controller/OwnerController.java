@@ -28,9 +28,8 @@ public class OwnerController {
 
         Owner savedOwner = ownerService.emailSignUp(owner);
 
-        return new ResponseEntity<>(OwnerResponse.builder()
-            .id(savedOwner.getId())
-            .email(savedOwner.getEmail())
-            .build(), HttpStatus.CREATED);
+        return new ResponseEntity<>(
+            OwnerResponse.builder().id(savedOwner.getId()).email(savedOwner.getEmail()).build(),
+            HttpStatus.CREATED);
     }
 }

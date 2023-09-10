@@ -2,7 +2,9 @@ package com.ch.yourdelivery.store.service;
 
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
+import com.ch.yourdelivery.store.domain.model.Menu;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
+import com.ch.yourdelivery.store.util.MenuRandomSampleData;
 import com.ch.yourdelivery.store.util.StoreRandomSampleData;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class StoreService {
+
+    public static final String CHICKEN = "치킨";
 
     // StoreResponse list 를 반환해주는 함수 작성예정
     // 다른 Interface 에서 가져온 데이터로 가정(ex. API, Interface)
@@ -26,22 +30,37 @@ public class StoreService {
         deliveryLocationList.add(StoreRandomSampleData.generateDeliveryLocation());
 
         for (int i = 0; i < Math.random() * 10; i++) {
+            String storeName = StoreRandomSampleData.generateStoreName();
 
             StoreResponse storeResponse = StoreResponse.builder()
                 .id(StoreRandomSampleData.generateRandomId())
                 .ownerId(StoreRandomSampleData.generateOwnerIndex())
-                .name(StoreRandomSampleData.generateStoreName())
+                .name(storeName)
                 .operatingTimeList(operatingTimeInMonthList)
                 .phoneNumber(StoreRandomSampleData.generatePhoneNumber())
                 .deliveryLocation(deliveryLocationList)
                 .descriptionForNotification(StoreRandomSampleData.generateDescription())
                 .storeLocationXY(StoreRandomSampleData.generateStoreLocationXY())
+                .menus(generateMenus(storeName))
                 .build();
 
             storeResponseList.add(storeResponse);
         }
 
         return storeResponseList;
+    }
+
+    private List<Menu> generateMenus(String storeName) {
+
+        List<Menu> menus = new ArrayList<>();
+        if (storeName.contains(CHICKEN)) {
+            menus.add(MenuRandomSampleData.generateChickenMenu());
+            menus.add(MenuRandomSampleData.generateChickenMenu());
+        } else{
+            menus.add(MenuRandomSampleData.generateTteokbokkiMenu());
+            menus.add(MenuRandomSampleData.generateTteokbokkiMenu());
+        }
+        return menus;
     }
 
 }

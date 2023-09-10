@@ -5,7 +5,6 @@ import com.ch.yourdelivery.store.service.StoreService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -14,10 +13,10 @@ public class StoreController {
 
     private final StoreService storeService;
 
-    //가게정보 다건조회
+    //유저 입장에서 모든 가게정보를 다건으로 조회한다.
     @GetMapping("/stores")
-    public List<StoreResponse> findStores(@RequestParam("ownerId") String ownerId) {
-        return storeService.findAllByOwnerId(ownerId);
+    public List<StoreResponse> findStores() {
+        return storeService.findAllStores();
     }
 
 }

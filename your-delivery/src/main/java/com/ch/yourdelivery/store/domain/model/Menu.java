@@ -7,6 +7,7 @@ import lombok.Getter;
 @Builder
 public class Menu {
 
+    private long id; // 메뉴 id
     private String name; // 메뉴 이름
     private int price; // 가격
     private String imagePath; // 이미지 경로

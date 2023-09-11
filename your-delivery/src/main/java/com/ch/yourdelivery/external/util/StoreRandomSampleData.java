@@ -1,4 +1,4 @@
-package com.ch.yourdelivery.store.util;
+package com.ch.yourdelivery.external.util;
 
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;

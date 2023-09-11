@@ -1,7 +1,7 @@
 package com.ch.yourdelivery.store.domain.model;
 
-import jakarta.persistence.Embeddable;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
 
 @Getter
 @Builder

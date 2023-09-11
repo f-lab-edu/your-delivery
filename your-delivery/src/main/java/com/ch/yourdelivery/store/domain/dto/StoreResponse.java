@@ -1,6 +1,7 @@
 package com.ch.yourdelivery.store.domain.dto;
 
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
+import com.ch.yourdelivery.store.domain.model.Menu;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
 import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
 import lombok.Builder;

@@ -28,8 +28,7 @@ public class Store {
     @Id
     @Column(name = "store_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long
-        id;
+    private Long id;
 
     private Long ownerId;
 

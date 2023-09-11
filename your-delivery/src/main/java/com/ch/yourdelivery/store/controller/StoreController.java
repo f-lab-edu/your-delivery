@@ -20,16 +20,15 @@ public class StoreController {
 
     //가게정보 단건저장
     @PostMapping("/store")
-    public StoreResponse createStore(
-        @RequestBody StoreRequest storeRequest) {
+    public StoreResponse createStore(@RequestBody StoreRequest storeRequest) {
 
-        Store store =
-            Store.builder().name(storeRequest.getName()).ownerId(storeRequest.getOwnerId())
-                .operatingTimeList(storeRequest.getOperatingTimeList())
-                .phoneNumber(storeRequest.getPhoneNumber())
-                .deliveryLocation(storeRequest.getDeliveryLocation())
-                .descriptionForNotification(storeRequest.getDescriptionForNotification())
-                .storeLocationXY(storeRequest.getStoreLocationXY()).build();
+        Store store = Store.builder().name(storeRequest.getName())
+            .ownerId(storeRequest.getOwnerId())
+            .operatingTimeList(storeRequest.getOperatingTimeList())
+            .phoneNumber(storeRequest.getPhoneNumber())
+            .deliveryLocation(storeRequest.getDeliveryLocation())
+            .descriptionForNotification(storeRequest.getDescriptionForNotification())
+            .storeLocationXY(storeRequest.getStoreLocationXY()).build();
 
         store = storeService.saveStore(store);
 

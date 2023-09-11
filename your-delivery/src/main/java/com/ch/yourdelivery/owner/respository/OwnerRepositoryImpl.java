@@ -1,11 +1,9 @@
 package com.ch.yourdelivery.owner.respository;
 
 import com.ch.yourdelivery.owner.domain.model.Owner;
-import org.springframework.stereotype.Repository;
-
-import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class OwnerRepositoryImpl implements OwnerRepository {

@@ -4,8 +4,8 @@ import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 import com.ch.yourdelivery.store.service.StoreService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

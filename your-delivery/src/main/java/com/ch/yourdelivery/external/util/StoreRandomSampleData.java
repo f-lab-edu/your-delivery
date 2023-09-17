@@ -1,7 +1,6 @@
 package com.ch.yourdelivery.external.util;
 
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
-
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
 import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
 import java.util.List;
@@ -20,14 +19,15 @@ public class StoreRandomSampleData {
             .build();
     }
 
-    private static OperatingTimeInMonth generateOperatingTimeInMonth(){
+    private static OperatingTimeInMonth generateOperatingTimeInMonth() {
         return OperatingTimeInMonth.builder()
             .dayOfTheWeek(UUID.randomUUID().toString())
             .startTime(Integer.toString(random.nextInt(8, 11)))
             .endTime(Integer.toString(random.nextInt(19, 23)))
             .build();
     }
-    public static List<OperatingTimeInMonth>  generateOperatingTimeInMonthList(int count) {
+
+    public static List<OperatingTimeInMonth> generateOperatingTimeInMonthList(int count) {
         return IntStream.range(0, count)
             .mapToObj(i -> generateOperatingTimeInMonth())
             .toList();

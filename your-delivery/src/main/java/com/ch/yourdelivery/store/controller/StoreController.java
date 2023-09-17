@@ -15,7 +15,7 @@ public class StoreController {
 
     //가게정보 다건조회
     @GetMapping("/stores")
-    public List<StoreResponse> findStores(@RequestParam String category, Pageable pageable) {
+    public List<StoreResponse> findStores() {//@RequestParam String category, Pageable pageable
         return storeService.findAllStores();
     }
 

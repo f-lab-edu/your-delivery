@@ -1,4 +1,4 @@
-package com.ch.yourdelivery.external;
+package com.ch.yourdelivery.external.util;
 
 import com.ch.yourdelivery.store.domain.model.Menu;
 import org.springframework.stereotype.Component;

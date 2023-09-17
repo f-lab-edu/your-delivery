@@ -1,4 +1,4 @@
-package com.ch.yourdelivery.store.service;
+package com.ch.yourdelivery.external;
 
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 

@@ -1,12 +1,11 @@
 package com.ch.yourdelivery.external;
 
+import com.ch.yourdelivery.external.util.MenuRandomSampleData;
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
-import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
-import com.ch.yourdelivery.store.domain.model.Menu;
-import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
-import com.ch.yourdelivery.store.service.StoreClient;
 import com.ch.yourdelivery.external.util.StoreRandomSampleData;
 import jakarta.annotation.PostConstruct;
+import java.util.Random;
+import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,37 +14,26 @@ import java.util.List;
 @Service
 public class StoreClientImpl implements StoreClient {
 
-    public static final String CHICKEN = "치킨";
 
-    private List<StoreResponse> storeResponseList = new ArrayList<>();
-    private List<OperatingTimeInMonth> operatingTimeInMonthList = new ArrayList<>();
-    private  List<DeliveryLocation> deliveryLocationList = new ArrayList<>();
+    private static final Random random = new Random();
+    private static final List<StoreResponse> list = new ArrayList<>();
 
     @PostConstruct
     public void init(){
-        operatingTimeInMonthList.add(StoreRandomSampleData.generateOperatingTimeInMonth());
-        operatingTimeInMonthList.add(StoreRandomSampleData.generateOperatingTimeInMonth());
-
-        deliveryLocationList.add(StoreRandomSampleData.generateDeliveryLocation());
-        deliveryLocationList.add(StoreRandomSampleData.generateDeliveryLocation());
-
-        for (int i = 0; i < Math.random() * 10; i++) {
-            String storeName = StoreRandomSampleData.generateStoreName();
 
             StoreResponse storeResponse = StoreResponse.builder()
-                    .id(StoreRandomSampleData.generateRandomId())
-                    .ownerId(StoreRandomSampleData.generateOwnerIndex())
-                    .name(storeName)
-                    .operatingTimeList(operatingTimeInMonthList)
-                    .phoneNumber(StoreRandomSampleData.generatePhoneNumber())
-                    .deliveryLocation(deliveryLocationList)
-                    .descriptionForNotification(StoreRandomSampleData.generateDescription())
+                    .id(random.nextLong())
+                    .ownerId(random.nextLong())
+                    .name(UUID.randomUUID().toString())
+                    .operatingTimeList(StoreRandomSampleData.generateOperatingTimeInMonthList(3))
+                    .phoneNumber(UUID.randomUUID().toString())
+                    .deliveryLocation(StoreRandomSampleData.generateDeliveryLocationList(3))
+                    .descriptionForNotification(UUID.randomUUID().toString())
                     .storeLocationXY(StoreRandomSampleData.generateStoreLocationXY())
                     .menus(MenuRandomSampleData.generateRandomMenus(5))
                     .build();
 
-            storeResponseList.add(storeResponse);
-        }
+        list.add(storeResponse);
     }
 
     @Override
@@ -56,7 +44,7 @@ public class StoreClientImpl implements StoreClient {
         // 15 = size * page
         //validation 해야함...
         //return storeResponseList.subList(size * (page-1) + 1,  size * page);
-        return storeResponseList;
+        return list;
     }
 
 

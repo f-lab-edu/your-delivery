@@ -20,7 +20,7 @@ public class StoreClientImpl implements StoreClient {
 
     @PostConstruct
     public void init() {
-        for (int i = 0; i < random.nextInt(10); i++) {
+        for (int i = 0; i < random.nextInt(100,1000); i++) {
             StoreResponse storeResponse = StoreResponse.builder()
                 .id(random.nextLong())
                 .ownerId(random.nextLong())
@@ -39,17 +39,23 @@ public class StoreClientImpl implements StoreClient {
     }
 
     @Override
-    public List<StoreResponse> findStoresByCategory(String category) {
-        //size 5
-        //page 3
-        // 11 = size * (page-1) + 1
-        // 15 = size * page
-        //validation 해야함...
-        //return storeResponseList.subList(size * (page-1) + 1,  size * page);
-        return list.stream().filter(
+    public List<StoreResponse> findStoresByCategory(String category, int page, int size) {
+        int start = size * (page-1);
+        int end = size * page;
+
+        List storesByCategories = list.stream().filter(
                 storeResponse ->
                     storeResponse.getCategory().getName().equals(category))
             .collect(Collectors.toList());
+
+        //end의 사이즈가 끝을 지나는 경우는 마지막 페이지를 리턴(Validation 역할도 함)
+        if(storesByCategories.size()<end){
+            start = (storesByCategories.size()/size) * size;
+            end = start + storesByCategories.size()%size;
+            return storesByCategories.subList(start, end);
+        }else{
+            return storesByCategories.subList(start, end);
+        }
     }
 
 }

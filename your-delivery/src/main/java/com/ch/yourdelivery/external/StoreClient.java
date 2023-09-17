@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface StoreClient {
 
-    List<StoreResponse> findStoresByCategory(String category);
+    List<StoreResponse> findStoresByCategory(String category, int page, int size);
 }

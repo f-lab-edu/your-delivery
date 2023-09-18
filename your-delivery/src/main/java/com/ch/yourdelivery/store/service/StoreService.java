@@ -2,6 +2,7 @@ package com.ch.yourdelivery.store.service;
 
 import com.ch.yourdelivery.external.StoreClient;
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
+import com.ch.yourdelivery.store.domain.model.Menu;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +18,7 @@ public class StoreService {
         return storeClient.findStoresByCategory(category, page, size);
     }
 
+    public List<Menu> findMenusByStoreId(String storeId, int page, int size) {
+        return storeClient.findMenusByStoreId(storeId, page, size);
+    }
 }

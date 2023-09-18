@@ -3,6 +3,7 @@ package com.ch.yourdelivery.external;
 import com.ch.yourdelivery.external.util.MenuRandomSampleData;
 import com.ch.yourdelivery.external.util.StoreRandomSampleData;
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
+import com.ch.yourdelivery.store.domain.model.Menu;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class StoreClientImpl implements StoreClient {
 
     @PostConstruct
     public void init() {
-        for (int i = 0; i < random.nextInt(100,1000); i++) {
+        for (int i = 0; i < random.nextInt(100, 1000); i++) {
             StoreResponse storeResponse = StoreResponse.builder()
                 .id(random.nextLong())
                 .ownerId(random.nextLong())
@@ -40,7 +41,7 @@ public class StoreClientImpl implements StoreClient {
 
     @Override
     public List<StoreResponse> findStoresByCategory(String category, int page, int size) {
-        int start = size * (page-1);
+        int start = size * (page - 1);
         int end = size * page;
 
         List storesByCategories = list.stream().filter(
@@ -49,13 +50,18 @@ public class StoreClientImpl implements StoreClient {
             .collect(Collectors.toList());
 
         //end의 사이즈가 끝을 지나는 경우는 마지막 페이지를 리턴(Validation 역할도 함)
-        if(storesByCategories.size()<end){
-            start = (storesByCategories.size()/size) * size;
-            end = start + storesByCategories.size()%size;
+        if (storesByCategories.size() < end) {
+            start = (storesByCategories.size() / size) * size;
+            end = start + storesByCategories.size() % size;
             return storesByCategories.subList(start, end);
-        }else{
+        } else {
             return storesByCategories.subList(start, end);
         }
+    }
+
+    @Override
+    public List<Menu> findMenusByStoreId(String storeId, int page, int size) {
+        return null;
     }
 
 }

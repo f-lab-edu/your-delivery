@@ -1,5 +1,6 @@
 package com.ch.yourdelivery.store.service;
 
+import com.ch.yourdelivery.external.StoreClient;
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Store {
+public class StoreForCategoryDto {
     private Long id;
     private String name;
     private String phoneNumber;

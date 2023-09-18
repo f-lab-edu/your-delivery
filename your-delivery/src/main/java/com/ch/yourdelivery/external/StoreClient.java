@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface StoreClient {
 
-    List<Store> findStoresByCategory(String category, int page, int size);
+    List<StoreForCategoryDto> findStoresByCategory(String category, int page, int size);
 }

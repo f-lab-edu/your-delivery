@@ -16,12 +16,12 @@ public class StoreClientImpl implements StoreClient {
 
 
     private static final Random random = new Random();
-    private static final List<Store> list = new ArrayList<>();
+    private static final List<StoreForCategoryDto> list = new ArrayList<>();
 
     @PostConstruct
     public void init() {
         for (int i = 0; i < random.nextInt(100, 1000); i++) {
-            Store store = Store.builder()
+            StoreForCategoryDto store = StoreForCategoryDto.builder()
                     .id(random.nextLong())
                     .name(UUID.randomUUID().toString())
                     .phoneNumber(UUID.randomUUID().toString())
@@ -33,7 +33,7 @@ public class StoreClientImpl implements StoreClient {
     }
 
     @Override
-    public List<Store> findStoresByCategory(String category, int page, int size) {
+    public List<StoreForCategoryDto> findStoresByCategory(String category, int page, int size) {
         int start = size * (page - 1);
         int end = size * page;
 

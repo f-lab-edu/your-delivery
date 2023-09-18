@@ -2,7 +2,9 @@ package com.ch.yourdelivery.store.controller;
 
 import com.ch.yourdelivery.store.domain.dto.StoreResponse;
 import com.ch.yourdelivery.store.service.StoreService;
+
 import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,12 @@ public class StoreController {
     //가게정보 다건조회
     @GetMapping("/stores")
     public List<StoreResponse> findStoresByCategory(@RequestParam String category, Pageable pageable) {
-        return storeService.findStoresByCategory(category,pageable.getPageNumber(),pageable.getPageSize());
+        return storeService.findStoresByCategory(category, pageable.getPageNumber(), pageable.getPageSize())
+                .stream().map(store -> StoreResponse.builder()
+                        .id(store.getId())
+                        .name(store.getName())
+                        .image(store.getImage())
+                        .build()).toList();
     }
 
 }

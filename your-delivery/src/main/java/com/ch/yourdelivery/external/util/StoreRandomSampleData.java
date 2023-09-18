@@ -1,5 +1,6 @@
 package com.ch.yourdelivery.external.util;
 
+import com.ch.yourdelivery.store.domain.model.Category;
 import com.ch.yourdelivery.store.domain.model.DeliveryLocation;
 import com.ch.yourdelivery.store.domain.model.OperatingTimeInMonth;
 import com.ch.yourdelivery.store.domain.model.StoreLocationXY;
@@ -10,6 +11,7 @@ import java.util.stream.IntStream;
 
 public class StoreRandomSampleData {
 
+    private static final String[] categories = {"치킨", "일식", "중식", "한식", "양식", "초밥"};
     private static final Random random = new Random();
 
     public static StoreLocationXY generateStoreLocationXY() {
@@ -45,6 +47,13 @@ public class StoreRandomSampleData {
         return IntStream.range(0, count)
             .mapToObj(i -> generateDeliveryLocation())
             .toList();
+    }
+
+    public static Category generateCategory() {
+        return Category.builder()
+            .id(random.nextInt(6))
+            .name(categories[random.nextInt(6)])
+            .build();
     }
 }
 

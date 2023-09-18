@@ -13,8 +13,8 @@ public class StoreService {
 
     private final StoreClient storeClient;
 
-    public List<StoreResponse> findAllStores() {
-        return storeClient.findAllStores();
+    public List<StoreResponse> findStoresByCategory(String category, int page, int size) {
+        return storeClient.findStoresByCategory(category, page, size);
     }
 
 }
